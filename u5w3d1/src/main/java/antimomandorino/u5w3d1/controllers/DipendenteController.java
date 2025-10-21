@@ -37,15 +37,6 @@ public class DipendenteController {
         return this.dipendenteService.findById(dipendenteId);
     }
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public Dipendente createDipendente(@RequestBody @Validated DipendenteDTO payload, BindingResult validationResult) {
-        if (validationResult.hasErrors()) {
-            throw new ValidationException(validationResult.getFieldErrors().stream().map((fieldError) -> fieldError.getDefaultMessage()).toList());
-        } else {
-            return this.dipendenteService.saveDipendente(payload);
-        }
-    }
 
     @PutMapping({"/{dipendenteId}"})
     public Dipendente findByIdAndUpdate(@PathVariable UUID dipendenteId, @RequestBody @Validated DipendenteDTO dipendentePayload, BindingResult validationResult) {
