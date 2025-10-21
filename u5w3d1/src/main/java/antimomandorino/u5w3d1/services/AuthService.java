@@ -23,6 +23,7 @@ public class AuthService {
         Dipendente found = this.dipendenteService.findByEmail(body.email());
 
         if (found.getPassword().equals(body.password())) {
+            //TODO : migliorare gestione password
 
             return jwtTools.createToken(found);
         } else {
